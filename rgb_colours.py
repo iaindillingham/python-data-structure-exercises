@@ -15,12 +15,12 @@
 # I don't know the RGB code for burnt sienna
 
 colours = [
-    ['red', 'F00'],
-    ['yellow', 'FF0'],
-    ['green', '0F0'],
-    ['cyan', '0FF'],
-    ['blue', '00F'],
-    ['magenta', 'F0F'],
+    ["red", "F00"],
+    ["yellow", "FF0"],
+    ["green", "0F0"],
+    ["cyan", "0FF"],
+    ["blue", "00F"],
+    ["magenta", "F0F"],
 ]
 
 
