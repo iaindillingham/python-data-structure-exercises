@@ -1,3 +1,5 @@
+import sys
+
 # This program knows about the RGB code corresponding to common colours.
 #
 # Usage:
@@ -15,13 +17,26 @@
 # I don't know the RGB code for burnt sienna
 
 colours = [
-    ["red", "F00"],
-    ["yellow", "FF0"],
-    ["green", "0F0"],
-    ["cyan", "0FF"],
-    ["blue", "00F"],
-    ["magenta", "F0F"],
+    ["red", "f00"],
+    ["yellow", "ff0"],
+    ["green", "0f0"],
+    ["cyan", "0ff"],
+    ["blue", "00f"],
+    ["magenta", "f0f"],
 ]
+
+
+def main(key):
+    index = dict(colours) | dict(c[::-1] for c in colours)
+    value = index.get(key)
+    if value is None:
+        print(f"I don't have an entry for {key}")
+    else:
+        print(f"The entry for {key} is {value}")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1].lower())
 
 
 # TODO:
