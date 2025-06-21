@@ -28,8 +28,8 @@ sorter = functools.partial(sorted, key=lambda x: x[1], reverse=True)
 # TODO: Write code to answer the following questions:
 
 match_goals = sorter([(r.keys(), sum(r.values())) for r in results])
-print("The match with the most goals was", "?")
-print("The match with the fewest goals was", "?")
+print("The match with the most goals was", "-".join(match_goals[0][0]))
+print("The match with the fewest goals was", "-".join(match_goals[-1][0]))
 
 team_goals = collections.defaultdict(list)
 for team, match_goals in itertools.chain(*(r.items() for r in results)):
@@ -37,8 +37,8 @@ for team, match_goals in itertools.chain(*(r.items() for r in results)):
 
 team_total_goals = {team: sum(goals) for team, goals in team_goals.items()}
 team_total_goals = sorter(team_total_goals.items())
-print("The team with the most total goals was", "?")
-print("The team with the fewest total goals was", "?")
+print("The team with the most total goals was", team_total_goals[0][0])
+print("The team with the fewest total goals was", team_total_goals[-1][0])
 
 
 def get_result_as_points(result_as_goals):
@@ -57,7 +57,7 @@ for team, match_points in itertools.chain(*(r.items() for r in results_as_points
 
 team_total_points = {team: sum(points) for team, points in team_points.items()}
 team_total_points = sorter(team_total_points.items())
-print("The team with the most points was", "?")
-print("The team with the fewest points was", "?")
+print("The team with the most points was", team_total_points[0][0])
+print("The team with the fewest points was", team_total_points[-1][0])
 
 # TODO (extra): Write code to compute and display a league table
