@@ -1,4 +1,5 @@
 import collections
+import functools
 import itertools
 
 # This file contains a list of results from Group F of the Euro 2016
@@ -22,11 +23,11 @@ results = [
 
 print("There were {} matches in the group".format(len(results)))
 
+sorter = functools.partial(sorted, key=lambda x: x[1], reverse=True)
+
 # TODO: Write code to answer the following questions:
 
-match_goals = sorted(
-    [(r.keys(), sum(r.values())) for r in results], key=lambda x: x[1], reverse=True
-)
+match_goals = sorter([(r.keys(), sum(r.values())) for r in results])
 print("The match with the most goals was", "?")
 print("The match with the fewest goals was", "?")
 
@@ -35,7 +36,7 @@ for team, match_goals in itertools.chain(*(r.items() for r in results)):
     team_goals[team].append(match_goals)
 
 team_total_goals = {team: sum(goals) for team, goals in team_goals.items()}
-team_total_goals = sorted(team_total_goals.items(), key=lambda x: x[1], reverse=True)
+team_total_goals = sorter(team_total_goals.items())
 print("The team with the most total goals was", "?")
 print("The team with the fewest total goals was", "?")
 
@@ -55,7 +56,7 @@ for team, match_points in itertools.chain(*(r.items() for r in results_as_points
     team_points[team].append(match_points)
 
 team_total_points = {team: sum(points) for team, points in team_points.items()}
-team_total_points = sorted(team_total_points.items(), key=lambda x: x[1], reverse=True)
+team_total_points = sorter(team_total_points.items())
 print("The team with the most points was", "?")
 print("The team with the fewest points was", "?")
 
